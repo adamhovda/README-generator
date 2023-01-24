@@ -51,6 +51,7 @@ function renderLicenseLink(license) {
 const generateMarkdown = (data) => {
 renderLicenseLink(data.license);
 renderLicenseBadge(data.license)
+let gitLink = "https://www.github.com/" + data.githubUser
 
 return `
 # ${data.title}
@@ -99,6 +100,10 @@ ${data.contribute}
 ${data.tests}
 
 ## Questions
+
+${gitLink}
+
+For additional questions reach me at:  ${data.email}
 
 `
 
