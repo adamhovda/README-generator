@@ -4,6 +4,7 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -23,6 +24,13 @@ const questions = [
         name: `title`,
         message: `What the project's title?`
         
+    }
+,
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license are you using?',
+        choices: ['No license', 'Apache license 2.0', 'GNU General Public License v3.0', 'MIT License']
     }
 ,
     {
@@ -54,6 +62,9 @@ const questions = [
 
 ];
 
+
+
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(`${fileName}.md`, data, (err) =>
@@ -65,6 +76,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
     .then((data) => {
+
         let mdfile = generateMarkdown(data);
         writeToFile('README', mdfile)
     })
